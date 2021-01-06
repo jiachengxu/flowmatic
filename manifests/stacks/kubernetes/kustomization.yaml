@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kubeflow
+resources:
+  # Control pane
+  - github.com/kubeflow/manifests/admission-webhook/webhook/v3?ref=v1.2-branch
+  - github.com/kubeflow/manifests/common/centraldashboard/overlays/stacks?ref=v1.2-branch
+  - github.com/kubeflow/manifests/kubeflow-roles/base?ref=v1.2-branch
+  - github.com/kubeflow/manifests/jupyter/jupyter-web-app/base_v3?ref=v1.2-branch
+  - github.com/kubeflow/manifests/jupyter/notebook-controller/base_v3?ref=v1.2-branch
+  - github.com/kubeflow/manifests/profiles/base_v3?ref=v1.2-branch
+  # Training Operators
+  - github.com/kubeflow/manifests/pytorch-job/pytorch-job-crds/overlays/application?ref=v1.2-branch
+  - github.com/kubeflow/manifests/pytorch-job/pytorch-operator/overlays/application?ref=v1.2-branch
+  - github.com/kubeflow/manifests/tf-training/tf-job-crds/overlays/application?ref=v1.2-branch
+  - github.com/kubeflow/manifests/tf-training/tf-job-operator/overlays/application?ref=v1.2-branch
+  - github.com/kubeflow/manifests/mxnet-job/mxnet-operator/overlays/application?ref=v1.2-branch
+  - github.com/kubeflow/manifests/mpi-job/mpi-operator/overlays/application?ref=v1.2-branch
+  - github.com/kubeflow/manifests/katib/installs/katib-standalone?ref=v1.2-branch
+  # Pipelines
+  - github.com/kubeflow/manifests/pipeline/minio/installs/generic?ref=v1.2-branch
+  - github.com/kubeflow/manifests/pipeline/mysql/installs/generic?ref=v1.2-branch
+  - github.com/kubeflow/manifests/pipeline/installs/multi-user?ref=v1.2-branch
+  - github.com/kubeflow/manifests/argo/base_v3?ref=v1.2-branch
+  # Serving components
+  - github.com/kubeflow/manifests/seldon/seldon-core-operator/overlays/application?ref=v1.2-branch
+  # Metadata
+  - github.com/kubeflow/manifests/metadata/v3?ref=v1.2-branch
